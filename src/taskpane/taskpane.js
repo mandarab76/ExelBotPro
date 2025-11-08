@@ -214,14 +214,6 @@ async function analyzeWorkbook() {
             
             await context.sync();
             
-            let analysisHTML = '<strong>Workbook Information:</strong><br><br>';
-            analysisHTML += `<strong>Total Sheets:</strong> ${sheets.items.length}<br>`;
-            analysisHTML += '<strong>Sheet Names:</strong><br>';
-            
-            sheets.items.forEach((sheet, index) => {
-                analysisHTML += `${index + 1}. ${sheet.name}<br>`;
-            });
-            
             // Get active sheet info
             const activeSheet = context.workbook.worksheets.getActiveWorksheet();
             const usedRange = activeSheet.getUsedRange();
@@ -229,11 +221,49 @@ async function analyzeWorkbook() {
             
             await context.sync();
             
-            analysisHTML += `<br><strong>Active Sheet Data:</strong><br>`;
-            analysisHTML += `Rows: ${usedRange.rowCount}<br>`;
-            analysisHTML += `Columns: ${usedRange.columnCount}<br>`;
+            // Build analysis content safely using DOM methods
+            const analysisContent = document.getElementById('analysisContent');
+            analysisContent.textContent = ''; // Clear previous content
             
-            document.getElementById('analysisContent').innerHTML = analysisHTML;
+            // Create structured content
+            const createBold = (text) => {
+                const bold = document.createElement('strong');
+                bold.textContent = text;
+                return bold;
+            };
+            
+            const addLine = (parent, text, isBold = false) => {
+                if (isBold) {
+                    parent.appendChild(createBold(text));
+                } else {
+                    parent.appendChild(document.createTextNode(text));
+                }
+                parent.appendChild(document.createElement('br'));
+            };
+            
+            addLine(analysisContent, 'Workbook Information:', true);
+            analysisContent.appendChild(document.createElement('br'));
+            
+            analysisContent.appendChild(createBold('Total Sheets: '));
+            analysisContent.appendChild(document.createTextNode(sheets.items.length.toString()));
+            analysisContent.appendChild(document.createElement('br'));
+            
+            addLine(analysisContent, 'Sheet Names:', true);
+            
+            sheets.items.forEach((sheet, index) => {
+                analysisContent.appendChild(document.createTextNode(`${index + 1}. ${sheet.name}`));
+                analysisContent.appendChild(document.createElement('br'));
+            });
+            
+            analysisContent.appendChild(document.createElement('br'));
+            addLine(analysisContent, 'Active Sheet Data:', true);
+            
+            analysisContent.appendChild(document.createTextNode(`Rows: ${usedRange.rowCount}`));
+            analysisContent.appendChild(document.createElement('br'));
+            
+            analysisContent.appendChild(document.createTextNode(`Columns: ${usedRange.columnCount}`));
+            analysisContent.appendChild(document.createElement('br'));
+            
             document.getElementById('analysisOutput').style.display = 'block';
         });
     } catch (error) {
@@ -356,7 +386,7 @@ function showSuccess(message) {
     
     // Add to analysis section temporarily
     const analysisContent = document.getElementById('analysisContent');
-    analysisContent.innerHTML = '';
+    analysisContent.textContent = '';  // Clear previous content
     analysisContent.appendChild(outputDiv);
     document.getElementById('analysisOutput').style.display = 'block';
     
@@ -372,7 +402,7 @@ function showError(message) {
     outputDiv.textContent = message;
     
     const analysisContent = document.getElementById('analysisContent');
-    analysisContent.innerHTML = '';
+    analysisContent.textContent = '';  // Clear previous content
     analysisContent.appendChild(outputDiv);
     document.getElementById('analysisOutput').style.display = 'block';
     
@@ -385,5 +415,16 @@ function showError(message) {
 function showInfo(message) {
     const githubStatus = document.getElementById('githubStatus');
     githubStatus.className = 'info-box';
-    githubStatus.innerHTML = message.replace(/\n/g, '<br>');
+    
+    // Clear previous content
+    githubStatus.textContent = '';
+    
+    // Split by newlines and create text nodes with breaks
+    const lines = message.split('\n');
+    lines.forEach((line, index) => {
+        githubStatus.appendChild(document.createTextNode(line));
+        if (index < lines.length - 1) {
+            githubStatus.appendChild(document.createElement('br'));
+        }
+    });
 }
