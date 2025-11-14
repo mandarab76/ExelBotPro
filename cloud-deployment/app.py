@@ -158,11 +158,14 @@ def handle_excel_upload(file):
     except Exception as e:
         return f"❌ Error reading file: {str(e)}"
 
-github_token = os.getenv("GITHUB_TOKEN", "your_github_token")
-g = Github(github_token)
+github_token = os.getenv("GITHUB_TOKEN", "")
+g = Github(github_token) if github_token else None
 
 def push_to_github(repo_name, file_name, code):
     """Push VBA code to GitHub repository"""
+    if not g:
+        return "❌ GitHub token not configured. Set GITHUB_TOKEN environment variable in Hugging Face Space settings."
+    
     if not repo_name or not file_name or not code:
         return "❌ Please provide repository name, file name, and generate code first"
     
@@ -237,9 +240,9 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     gr.Markdown("""
     ---
     ### 💡 Quick Tips
-    - **No GitHub token?** Set environment variable: `export GITHUB_TOKEN=your_token`
-    - **Sample files** are included: `sample1.xlsx` and `sample2.xlsx`
+    - **No GitHub token?** Configure GITHUB_TOKEN in Space settings
     - **VBA files** can be imported directly into Excel's VBA editor (Alt+F11)
+    - **Mobile app available** - Check the Files tab for Android app download
     """)
 
     # Event handlers
@@ -248,4 +251,4 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     push_button.click(fn=push_to_github, inputs=[repo_name, file_name, vba_output], outputs=[push_status])
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", server_port=7860)
