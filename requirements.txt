@@ -1,6 +1,15 @@
-# ExcelBot Pro - Dependencies
+# ExcelBot Pro - NSE Stock Market Analysis Suite
+# Dependencies for Stock Market Data & VBA Automation
+
 # Web Interface
 gradio>=4.0.0
+
+# API Integration
+requests>=2.31.0
+
+# Stock Market APIs
+# Zerodha Kite (for future integration)
+# Financial Modeling Prep API (current)
 
 # GitHub Integration
 PyGithub>=2.1.1
@@ -9,6 +18,10 @@ PyGithub>=2.1.1
 pandas>=2.0.0
 openpyxl>=3.1.0
 xlrd>=2.0.1
+xlsxwriter>=3.1.0
 
 # Utilities
 python-dotenv>=1.0.0
+
+# Data Analysis
+numpy>=1.24.0

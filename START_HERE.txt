@@ -1,253 +1,252 @@
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                                                            ║
-║                   🎉 WELCOME TO EXCELBOT PRO v1.0.0 🎉                     ║
+║           🎉 ExcelBot Pro - NSE Stock Market Analysis Suite 🎉            ║
+║                          Version 1.0.0 - NSE Edition                       ║
 ║                                                                            ║
-║              Your Complete VBA Automation Solution is Ready!               ║
+║         Zerodha Kite & Financial Modeling Prep API Integration            ║
+║                    For Indian Stock Market (NSE) 🇮🇳                      ║
 ║                                                                            ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 
-👋 GETTING STARTED - READ THIS FIRST!
+👋 WELCOME - READ THIS FIRST!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-This package contains everything you need for a production-ready Excel VBA
-automation tool. Choose your path below:
+This is a complete NSE (National Stock Exchange of India) stock market
+analysis tool with real-time data, VBA automation, and Excel integration.
 
 
-🚀 QUICK START (5 Minutes)
+🎯 WHAT THIS TOOL DOES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 REAL-TIME NSE STOCK DATA
+  • Live quotes for any NSE stock (RELIANCE.NS, TCS.NS, etc.)
+  • Historical data (90 days)
+  • Top gainers, losers, and most active stocks
+  • Market cap, volume, P/E ratio, EPS, and more
+
+🔧 VBA MACRO GENERATION
+  • Stock data templates
+  • Price charts with ₹ formatting
+  • Portfolio analysis
+  • Moving averages (MA5, MA20)
+  • Professional formatting for Indian markets
+
+📈 EXCEL INTEGRATION
+  • Export NSE data to Excel
+  • Multiple sheets (quote + historical data)
+  • Ready-to-use VBA macros
+  • Indian currency formatting
+
+🐙 GITHUB INTEGRATION
+  • Version control for your macros
+  • Share VBA code with team
+
+
+📡 API KEYS (PRE-CONFIGURED & READY!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Zerodha Kite API
+   Key: kr8ob80gcmucrvph
+   Status: CONFIGURED ✓
+   Purpose: Trading integration (future)
+
+✅ Financial Modeling Prep API
+   Key: rtD0v37SghQ4gMZNfX7q2Arv6RO7StUv
+   Status: ACTIVE ✓
+   Free Tier: 250 requests/day
+   Coverage: All NSE stocks (.NS suffix)
+
+NO ADDITIONAL SETUP NEEDED - WORKS OUT OF THE BOX!
+
+
+🚀 QUICK START (Choose One)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 OPTION 1: Automated Setup ⭐ RECOMMENDED
 
-  Windows Users:
+  Windows:
     1. Double-click: setup.bat
-    2. Follow the on-screen instructions
-    3. Open browser to: http://localhost:7860
+    2. Wait for installation
+    3. Browser opens automatically
+    4. Go to: http://localhost:7860
 
-  Linux/Mac Users:
+  Linux/Mac:
     1. Open terminal in this folder
     2. Run: chmod +x setup.sh && ./setup.sh
-    3. Open browser to: http://localhost:7860
+    3. Browser opens automatically
+    4. Go to: http://localhost:7860
 
 OPTION 2: Manual Setup
 
-    1. Open terminal/command prompt in this folder
-    2. Run: pip install -r requirements.txt
-    3. Run: python excelbot_chat.py
-    4. Open browser to: http://localhost:7860
+    1. pip install -r requirements.txt
+    2. python excelbot_chat.py
+    3. Open: http://localhost:7860
 
 OPTION 3: Docker
 
-    1. Ensure Docker is installed
-    2. Run: docker-compose up -d
-    3. Open browser to: http://localhost:7860
+    1. docker-compose up -d
+    2. Open: http://localhost:7860
 
 
-📚 DOCUMENTATION GUIDE
+📊 TRY THESE NSE STOCKS FIRST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Read these files in order:
+Banking:
+  • HDFCBANK.NS - HDFC Bank
+  • ICICIBANK.NS - ICICI Bank
+  • SBIN.NS - State Bank of India
 
-  1. DELIVERY_SUMMARY.md     ← Read this first! Complete overview
-  2. QUICKSTART.md           ← 5-minute quick start guide
-  3. README.md               ← Full documentation and features
-  4. INSTALL_VERIFICATION.md ← Test your installation
-  5. DEPLOYMENT.md           ← Production deployment guide
-  6. CONTRIBUTING.md         ← How to contribute
+IT Services:
+  • TCS.NS - Tata Consultancy Services
+  • INFY.NS - Infosys
+  • WIPRO.NS - Wipro
 
-Quick Reference:
-  • PACKAGE_INFO.txt         ← Package contents and info
-  • CHANGELOG.md             ← Version history
-  • PROJECT_SUMMARY.md       ← Technical specifications
+Consumer Goods:
+  • RELIANCE.NS - Reliance Industries
+  • HINDUNILVR.NS - Hindustan Unilever
+  • ITC.NS - ITC Limited
+
+Automobiles:
+  • MARUTI.NS - Maruti Suzuki
+  • TATAMOTORS.NS - Tata Motors
 
 
-✨ WHAT'S INCLUDED
+🎯 FIRST STEPS AFTER STARTING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  ✓ Enhanced Python application (excelbot_chat.py)
-  ✓ 7 production-ready VBA templates
-  ✓ Excel file analyzer with statistics
-  ✓ GitHub integration for version control
-  ✓ Modern web interface with Gradio
-  ✓ 8 comprehensive documentation files
-  ✓ Automated setup scripts (Windows/Mac/Linux)
-  ✓ Docker deployment configuration
-  ✓ Sample Excel files for testing
-  ✓ Complete production-ready package
+1. GET LIVE NSE STOCK QUOTE (30 seconds)
+   ✓ Go to "NSE Stock Data" tab
+   ✓ Enter: RELIANCE.NS (or just RELIANCE)
+   ✓ Click: "Get Stock Quote"
+   ✓ View: Price, change, volume, market cap
+
+2. EXPORT STOCK DATA (1 minute)
+   ✓ Same tab, enter: TCS.NS
+   ✓ Click: "Export to Excel"
+   ✓ Download: TCS_data_YYYYMMDD.xlsx
+   ✓ Open in Excel (2 sheets: Quote + History)
+
+3. GENERATE VBA MACRO (1 minute)
+   ✓ Go to "VBA Generator" tab
+   ✓ Type: "Create stock data template"
+   ✓ Click: "Generate VBA Macro"
+   ✓ Copy to Excel (Alt+F11)
+
+4. CHECK MARKET MOVERS (30 seconds)
+   ✓ Go to "NSE Stock Data" tab
+   ✓ Click: "Top Gainers"
+   ✓ Click: "Top Losers"
+   ✓ Click: "Most Active"
 
 
-🎯 FIRST STEPS AFTER INSTALLATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-1. Generate Your First VBA Macro (30 seconds)
-   • Open the "VBA Generator" tab
-   • Type: "Sort my data by first column"
-   • Click "Generate VBA Macro"
-   • Copy the code to Excel (Alt+F11)
-
-2. Analyze an Excel File (1 minute)
-   • Open the "Excel Analyzer" tab
-   • Upload sample1.xlsx or sample2.xlsx
-   • Click "Analyze File"
-   • View statistics and data preview
-
-3. Explore the Help Tab
-   • Click the "Help" tab in the application
-   • Read about all available features
-   • Try different VBA templates
-
-
-🔧 TROUBLESHOOTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Issue: "Python not found"
-  → Install Python 3.7+ from https://python.org
-  → On Windows, check "Add Python to PATH" during install
-
-Issue: "pip not found"
-  → Run: python -m ensurepip --default-pip
-
-Issue: "Port 7860 already in use"
-  → Close other applications using port 7860
-  → Or change port in excelbot_chat.py
-
-Issue: Application won't start
-  → Run: pip install --upgrade -r requirements.txt
-  → Check Python version: python --version (need 3.7+)
-
-For more help, see: INSTALL_VERIFICATION.md
-
-
-📦 PACKAGE CONTENTS (20 Files)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Core Files:
-  • excelbot_chat.py - Main application
-  • requirements.txt - Dependencies
-  • LICENSE - MIT License
-
-Documentation (9 files):
-  • START_HERE.txt - This file
-  • DELIVERY_SUMMARY.md - Complete overview
-  • QUICKSTART.md - Quick start guide
-  • README.md - Full documentation
-  • INSTALL_VERIFICATION.md - Testing guide
-  • DEPLOYMENT.md - Production guide
-  • CONTRIBUTING.md - Contribution guide
-  • CHANGELOG.md - Version history
-  • PROJECT_SUMMARY.md - Technical specs
-  • PACKAGE_INFO.txt - Package info
-
-Configuration:
-  • .env.example - Environment template
-  • .gitignore - Git ignore rules
-  • .dockerignore - Docker ignore rules
-
-Deployment:
-  • setup.sh - Linux/Mac setup
-  • setup.bat - Windows setup
-  • Dockerfile - Docker config
-  • docker-compose.yml - Docker Compose
-
-Samples:
-  • sample1.xlsx - Sample Excel file
-  • sample2.xlsx - Sample Excel file
-
-
-🌟 KEY FEATURES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-VBA Templates:
-  ✓ Sort data
-  ✓ Apply filters
-  ✓ Highlight duplicates
-  ✓ Remove duplicates
-  ✓ Format tables
-  ✓ Calculate sums
-  ✓ Create pivot tables
-
-Excel Analysis:
-  ✓ File statistics
-  ✓ Data preview
-  ✓ Quality reports
-  ✓ Missing values
-  ✓ Statistical summaries
-
-GitHub Integration:
-  ✓ Push macros to repositories
-  ✓ Version control
-  ✓ Auto-update files
-  ✓ Secure authentication
-
-
-💡 EXAMPLE TASKS TO TRY
+💡 EXAMPLE TASKS FOR VBA GENERATOR
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Copy these into the VBA Generator:
 
-  • "Sort my data alphabetically"
-  • "Apply filters to my spreadsheet"
-  • "Highlight all duplicate values"
-  • "Format my table with colors and borders"
-  • "Remove duplicate rows"
-  • "Add sum totals to numeric columns"
-  • "Create a pivot table"
+  • "Create stock data template"
+  • "Create stock price chart"
+  • "Analyze portfolio"
+  • "Calculate moving averages"
+  • "Format stock data table"
+  • "Sort stock data"
+  • "Filter profitable stocks"
 
 
-🔐 OPTIONAL: GITHUB SETUP
+🔧 IMPORTANT NOTES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-To enable GitHub integration:
+SYMBOL FORMAT:
+  ✅ Correct: RELIANCE.NS, TCS.NS, INFY.NS
+  ❌ Wrong: RELIANCE, TCS, RELIANCE.BSE
+  💡 App auto-adds .NS if you forget!
 
-  1. Get token: https://github.com/settings/tokens
-     (Generate new token with 'repo' permissions)
+NSE MARKET HOURS:
+  • Monday to Friday
+  • 9:15 AM - 3:30 PM IST
+  • Live data during market hours
+  • Historical data always available
 
-  2. Set environment variable:
-     Windows:  set GITHUB_TOKEN=your_token_here
-     Mac/Linux: export GITHUB_TOKEN=your_token_here
+API LIMITS:
+  • Free tier: 250 requests/day
+  • Plan your queries wisely
+  • Export data to Excel for offline analysis
 
-  3. Or create .env file:
-     Copy .env.example to .env
-     Edit .env and add your token
+EXCEL MACROS:
+  • Enable macros in Excel
+  • Save as .xlsm (macro-enabled)
+  • Alt+F11 to open VBA editor
+  • F5 to run macro
 
-  4. Restart the application
 
-
-📞 GETTING HELP
+🆘 TROUBLESHOOTING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Documentation:
-  📖 Read the .md files in this folder
-  ❓ Check the Help tab in the application
+Issue: "No data found for symbol"
+  → Use format: RELIANCE.NS (not RELIANCE)
+  → Check NSE market hours
+  → Try: TCS.NS, INFY.NS, HDFCBANK.NS
 
-Community:
-  🐛 Report bugs: github.com/mandarab76/ExcelBotPro/issues
-  💬 Ask questions: github.com/mandarab76/ExcelBotPro/discussions
+Issue: "API Error"
+  → Check internet connection
+  → Verify API limits not exceeded
+  → Wait 10 seconds and retry
 
-Verification:
-  ✅ Run through INSTALL_VERIFICATION.md to test everything
+Issue: "Python not found"
+  → Install Python 3.7+ from python.org
+  → Windows: Check "Add Python to PATH"
+  → Restart terminal
+
+Issue: "Port 7860 in use"
+  → Close other applications using port
+  → Or kill process: lsof -i :7860
+
+Issue: "Excel macro not working"
+  → Enable macros in Excel settings
+  → Save file as .xlsm format
+  → Check VBA code syntax
+
+
+📚 DOCUMENTATION FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Read in this order:
+
+  1. QUICKSTART.md          ← 5-minute tutorial
+  2. README.md              ← Complete documentation
+  3. In-app Help tab        ← Comprehensive guide
+  4. DEPLOYMENT.md          ← Production deployment
+
+Additional:
+  • CONTRIBUTING.md         ← How to contribute
+  • CHANGELOG.md            ← Version history
+  • PROJECT_SUMMARY.md      ← Technical details
 
 
 🎓 LEARNING PATH
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Day 1:
-  1. Read QUICKSTART.md
-  2. Run setup script
-  3. Generate first VBA macro
-  4. Analyze sample files
+  □ Install and run application
+  □ Get quotes for 5 NSE stocks
+  □ Export 2-3 stocks to Excel
+  □ Generate 3 different VBA macros
+  □ Check market movers
 
 Week 1:
-  1. Try all VBA templates
-  2. Analyze your own Excel files
-  3. Configure GitHub integration
-  4. Deploy with Docker (optional)
+  □ Build Excel portfolio of 10 stocks
+  □ Use portfolio analysis macro
+  □ Calculate moving averages
+  □ Create price charts
+  □ Explore all VBA templates
 
 Month 1:
-  1. Deploy to production (if needed)
-  2. Customize templates
-  3. Share with your team
-  4. Contribute improvements
+  □ Automate daily stock tracking
+  □ Build custom VBA macros
+  □ Integrate with trading strategy
+  □ Deploy to production (optional)
+  □ Contribute improvements
 
 
 ✅ SUCCESS CHECKLIST
@@ -255,39 +254,85 @@ Month 1:
 
 Installation:
   □ Python 3.7+ installed
-  □ Dependencies installed (pip install -r requirements.txt)
+  □ Dependencies installed
   □ Application starts without errors
   □ Browser opens to localhost:7860
 
 Testing:
-  □ VBA Generator produces code
-  □ Excel Analyzer processes sample files
-  □ All tabs are accessible
-  □ No console errors
+  □ NSE stock quote retrieved
+  □ Data exported to Excel
+  □ VBA macro generated
+  □ Market movers displayed
+  □ All tabs accessible
 
-Optional:
-  □ GitHub token configured
-  □ Docker container running
-  □ Production deployment complete
+Working:
+  □ API keys configured (pre-done!)
+  □ Real-time data loading
+  □ Excel files downloading
+  □ VBA macros running in Excel
+
+
+🌟 FEATURES SUMMARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Real-time NSE stock quotes with ₹ formatting
+✅ Historical data (90 days) export to Excel
+✅ Top gainers/losers/active stocks
+✅ 7 VBA macro templates for NSE analysis
+✅ Portfolio analysis with profit/loss tracking
+✅ Technical indicators (Moving Averages)
+✅ Professional Excel formatting
+✅ GitHub integration
+✅ Pre-configured API keys (Zerodha + FMP)
+✅ Free and open source (MIT License)
+✅ Made specifically for Indian stock market
+
+
+🇮🇳 MADE FOR INDIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This tool is designed specifically for the Indian stock market:
+  • NSE stock symbols (.NS suffix)
+  • Indian Rupee (₹) formatting
+  • IST timezone awareness
+  • Popular NSE stocks pre-configured
+  • Zerodha Kite API integration
+  • Cultural and market context
+
+
+📞 GETTING HELP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+In-App:        Click "Help" tab for full guide
+Documentation: Read .md files in this folder
+Issues:        github.com/mandarab76/ExcelBotPro/issues
+Discussions:   github.com/mandarab76/ExcelBotPro/discussions
 
 
 🎉 YOU'RE ALL SET!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Your ExcelBot Pro package is complete and ready to use!
+Your NSE stock market analysis tool is ready!
 
-Next Step: Run the setup script or read QUICKSTART.md
-
-Questions? Check the documentation files or visit the GitHub repository.
-
-Enjoying ExcelBot Pro? ⭐ Star the repository on GitHub!
+Next Steps:
+  1. Run setup.sh (Linux/Mac) or setup.bat (Windows)
+  2. Open http://localhost:7860 in browser
+  3. Try getting RELIANCE.NS quote
+  4. Explore all features
+  5. Read QUICKSTART.md for detailed tutorial
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-                    Made with ❤️ by Mandar Bahadarpurkar
-                  https://github.com/mandarab76/ExcelBotPro
+           Made with ❤️ for Indian Stock Market Community
+                  by Mandar Bahadarpurkar
 
-                          Version 1.0.0 | MIT License
+                    Version 1.0.0 - NSE Edition
+              Zerodha Kite + Financial Modeling Prep API
+                         MIT License | 2025
+
+                     ⭐ Star on GitHub if helpful!
+
+        NSE Market Hours: 9:15 AM - 3:30 PM IST (Mon-Fri)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

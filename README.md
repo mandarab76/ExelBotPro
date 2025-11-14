@@ -1,14 +1,16 @@
-# 🤖 ExcelBot Pro - VBA Automation Suite
+# 📈 ExcelBot Pro - NSE Stock Market Analysis Suite
 
 <div align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Gradio](https://img.shields.io/badge/Gradio-4.0%2B-orange)
+![NSE](https://img.shields.io/badge/Market-NSE%20India-saffron)
 
-**A professional tool for generating VBA macros, processing Excel files, and managing code with GitHub integration**
+**Professional NSE Stock Market Analysis with Zerodha Kite & Financial Modeling Prep API**
+**VBA Automation | Real-time Data | Excel Integration**
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [License](#-license)
+[Features](#-features) • [Installation](#-installation) • [API Setup](#-api-setup) • [Usage](#-usage) • [Documentation](#-documentation)
 
 </div>
 
@@ -18,328 +20,514 @@
 - [Overview](#-overview)
 - [Features](#-features)
 - [Installation](#-installation)
+- [API Setup](#-api-setup)
 - [Quick Start](#-quick-start)
-- [Usage](#-usage)
-- [VBA Templates](#-vba-templates)
-- [GitHub Integration](#-github-integration)
-- [Screenshots](#-screenshots)
+- [NSE Stock Symbols](#-nse-stock-symbols)
+- [VBA Macros](#-vba-macros)
+- [Usage Examples](#-usage-examples)
+- [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [License](#-license)
-- [Support](#-support)
 
 ## 🎯 Overview
 
-ExcelBot Pro is an advanced automation tool that bridges the gap between natural language and Excel VBA programming. Whether you're a beginner or an expert, ExcelBot Pro helps you:
+ExcelBot Pro is a comprehensive NSE (National Stock Exchange of India) stock market analysis tool that combines:
 
-- 🚀 **Generate VBA Macros** from simple text descriptions
-- 📊 **Analyze Excel Files** with detailed statistics and data quality reports
-- 🐙 **Version Control** your VBA code with seamless GitHub integration
-- ⚡ **Automate Common Tasks** like sorting, filtering, formatting, and more
+- 📊 **Real-time NSE Stock Data** from Financial Modeling Prep API
+- 🔧 **VBA Macro Generation** for Excel automation
+- 📈 **Market Analysis** - Top gainers, losers, and most active stocks
+- 💾 **Excel Export** - Historical data with professional formatting
+- 🐙 **GitHub Integration** - Version control for your macros
+- 🇮🇳 **Indian Market Focus** - NSE stocks with ₹ (Rupee) formatting
+
+### API Integration
+
+- **Zerodha Kite API**: `kr8ob80gcmucrvph` (Trading integration ready)
+- **Financial Modeling Prep**: `rtD0v37SghQ4gMZNfX7q2Arv6RO7StUv` (NSE data source)
 
 ## ✨ Features
 
-### 🔧 VBA Macro Generator
-- **Natural Language Processing**: Describe your task in plain English
-- **Smart Template Matching**: Automatically selects the right macro template
-- **7+ Pre-built Templates**: Sort, filter, highlight duplicates, format tables, and more
-- **Custom Macro Generation**: Creates templates for unique tasks
-- **Professional Code**: Production-ready VBA with error handling and comments
+### 📊 Real-time NSE Stock Market Data
+- Live stock quotes with real-time prices
+- Historical data (90 days default)
+- Market cap, volume, P/E ratio, EPS
+- Day high/low and 52-week range
+- Export to Excel with multiple sheets
 
-### 📊 Excel File Analyzer
-- **File Upload Support**: Works with .xlsx and .xls files
-- **Data Analytics**: Rows, columns, memory usage, and missing values
-- **Statistical Analysis**: Comprehensive statistical summaries
-- **Data Quality Reports**: Identify duplicates and data issues
-- **Data Preview**: Quick view of your Excel data
+### 📈 Market Analysis Tools
+- **Top Gainers**: Best performing NSE stocks
+- **Top Losers**: Worst performing NSE stocks
+- **Most Active**: Highest volume stocks
+- Percentage changes and trends
+- Volume analysis
 
-### 🐙 GitHub Integration
-- **Version Control**: Push macros directly to GitHub repositories
-- **Auto-Update**: Detects existing files and updates them
-- **Commit History**: Timestamped commits for tracking changes
-- **Secure Authentication**: Uses Personal Access Tokens
+### 🔧 VBA Macro Templates (NSE-Focused)
+1. **Stock Data Template** - Create NSE stock data worksheets
+2. **Stock Chart Generator** - Visualize price trends with ₹ formatting
+3. **Portfolio Analysis** - Calculate portfolio value and gains
+4. **Moving Averages** - Calculate MA5 and MA20 for technical analysis
+5. **Data Sorting** - Organize stock data efficiently
+6. **AutoFilter** - Filter stocks by criteria
+7. **Professional Formatting** - Indian stock market styling
 
-### 🎨 Modern UI
-- **Tabbed Interface**: Clean, organized workspace
-- **Syntax Highlighting**: Easy-to-read code display
-- **Responsive Design**: Works on desktop and mobile
-- **Built-in Help**: Comprehensive documentation within the app
+### 💻 Modern Web Interface
+- Clean tabbed interface
+- Real-time data updates
+- Syntax highlighting for VBA code
+- Mobile responsive design
+- Built-in comprehensive help
 
 ## 🚀 Installation
 
 ### Prerequisites
 - Python 3.7 or higher
-- pip (Python package manager)
-- Git (optional, for cloning the repository)
+- pip package manager
+- Internet connection (for API access)
+- Microsoft Excel (for VBA macro execution)
 
-### Step 1: Clone the Repository
+### Quick Install
+
+**Option 1: Automated Setup (Recommended)**
+
 ```bash
+# Linux/Mac
+chmod +x setup.sh
+./setup.sh
+
+# Windows
+setup.bat
+```
+
+**Option 2: Manual Setup**
+
+```bash
+# Clone repository
 git clone https://github.com/mandarab76/ExcelBotPro.git
 cd ExcelBotPro
-```
 
-Or download the ZIP file and extract it.
-
-### Step 2: Install Dependencies
-```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Run application
+python excelbot_chat.py
 ```
 
-### Step 3: Configure Environment (Optional)
-For GitHub integration, create a `.env` file:
+**Option 3: Docker**
+
+```bash
+docker-compose up -d
+```
+
+## 🔑 API Setup
+
+### Financial Modeling Prep API (Primary)
+
+The application comes pre-configured with FMP API:
+- **API Key**: `rtD0v37SghQ4gMZNfX7q2Arv6RO7StUv`
+- **Free Tier**: 250 requests/day
+- **Coverage**: All NSE stocks with .NS suffix
+
+To use your own API key:
+1. Sign up at https://financialmodelingprep.com
+2. Get your API key
+3. Set environment variable:
+```bash
+export FMP_API_KEY=your_key_here
+```
+
+### Zerodha Kite API (Future Trading Features)
+
+The application is configured with Zerodha API:
+- **API Key**: `kr8ob80gcmucrvph`
+- **Requirements**: Active Zerodha trading account
+- **Purpose**: Ready for future trading integration
+
+To configure:
+1. Visit https://kite.trade/
+2. Create/login to account
+3. Generate API key
+4. Set environment variable:
+```bash
+export ZERODHA_API_KEY=your_key_here
+```
+
+### Environment Configuration
+
+Create `.env` file:
 ```bash
 cp .env.example .env
+# Edit .env with your keys
 ```
 
-Edit `.env` and add your GitHub Personal Access Token:
+Example `.env`:
 ```
-GITHUB_TOKEN=your_github_personal_access_token_here
+ZERODHA_API_KEY=kr8ob80gcmucrvph
+FMP_API_KEY=rtD0v37SghQ4gMZNfX7q2Arv6RO7StUv
+GITHUB_TOKEN=your_github_token  # Optional
 ```
 
-**To get a GitHub token:**
-1. Go to [GitHub Settings → Developer Settings → Personal Access Tokens](https://github.com/settings/tokens)
-2. Click "Generate new token"
-3. Select `repo` permissions
-4. Copy the token to your `.env` file
+## ⚡ Quick Start
 
-### Step 4: Run the Application
+### 1. Start the Application
+
 ```bash
 python excelbot_chat.py
 ```
 
-The application will start at `http://localhost:7860`
+Open browser to: `http://localhost:7860`
 
-## ⚡ Quick Start
+### 2. Get NSE Stock Quote (30 seconds)
 
-### 1. Generate Your First VBA Macro
-1. Open the **VBA Generator** tab
-2. Type a task description, e.g., "Sort my data by first column"
-3. Click **Generate VBA Macro**
-4. Copy the generated code to Excel's VBA editor (Alt+F11)
+1. Go to **"NSE Stock Data"** tab
+2. Enter stock symbol: `RELIANCE.NS` or just `RELIANCE`
+3. Click **"Get Stock Quote"**
+4. View real-time data
 
-### 2. Analyze an Excel File
-1. Open the **Excel Analyzer** tab
-2. Upload your .xlsx or .xls file
-3. Click **Analyze File** for quick stats
-4. Click **Detailed Analysis** for comprehensive reports
+### 3. Generate VBA Macro (1 minute)
 
-### 3. Push Code to GitHub
-1. Generate a VBA macro first
-2. Open the **GitHub Integration** tab
-3. Enter your repository name (e.g., `username/repo-name`)
-4. Enter a file name (e.g., `my_macro.bas`)
-5. Paste the code and click **Push to GitHub**
+1. Go to **"VBA Generator"** tab
+2. Type: `"Create stock data template"`
+3. Click **"Generate VBA Macro"**
+4. Copy code to Excel (Alt+F11)
+5. Run macro (F5)
 
-## 📖 Usage
+### 4. Export Stock Data (2 minutes)
 
-### Using VBA Macros in Excel
+1. Go to **"NSE Stock Data"** tab
+2. Enter symbol: `TCS.NS`
+3. Click **"Export to Excel"**
+4. Download file with current quote + 90-day history
+5. Open in Excel and analyze
 
-Once you've generated a macro:
+## 📊 NSE Stock Symbols
 
-1. **Open Excel** with your data file
-2. **Press Alt+F11** to open the VBA Editor
-3. **Insert → Module** to create a new module
-4. **Paste the generated code**
-5. **Press F5** or click Run to execute the macro
+### Popular NSE Stocks (with .NS suffix)
 
-### Command-Line Options
+#### Banking & Finance
+- `HDFCBANK.NS` - HDFC Bank
+- `ICICIBANK.NS` - ICICI Bank
+- `SBIN.NS` - State Bank of India
+- `KOTAKBANK.NS` - Kotak Mahindra Bank
+- `AXISBANK.NS` - Axis Bank
+- `BAJFINANCE.NS` - Bajaj Finance
 
-You can customize the server settings:
+#### IT Services
+- `TCS.NS` - Tata Consultancy Services
+- `INFY.NS` - Infosys
+- `WIPRO.NS` - Wipro
+- `HCLTECH.NS` - HCL Technologies
+- `TECHM.NS` - Tech Mahindra
 
-```python
-# In excelbot_chat.py, modify the launch parameters:
-demo.launch(
-    server_name="0.0.0.0",  # Accept connections from any IP
-    server_port=7860,        # Port number
-    share=True,              # Create public share link
-    show_error=True          # Show detailed errors
-)
+#### Consumer Goods
+- `HINDUNILVR.NS` - Hindustan Unilever
+- `ITC.NS` - ITC Limited
+- `NESTLEIND.NS` - Nestle India
+- `TITAN.NS` - Titan Company
+- `DABUR.NS` - Dabur India
+
+#### Energy & Materials
+- `RELIANCE.NS` - Reliance Industries
+- `ONGC.NS` - Oil and Natural Gas Corp
+- `COALINDIA.NS` - Coal India
+- `BPCL.NS` - Bharat Petroleum
+
+#### Automobiles
+- `MARUTI.NS` - Maruti Suzuki
+- `TATAMOTORS.NS` - Tata Motors
+- `M&M.NS` - Mahindra & Mahindra
+- `BAJAJ-AUTO.NS` - Bajaj Auto
+
+#### Infrastructure
+- `LT.NS` - Larsen & Toubro
+- `ULTRACEMCO.NS` - UltraTech Cement
+- `ADANIPORTS.NS` - Adani Ports
+
+#### Telecom
+- `BHARTIARTL.NS` - Bharti Airtel
+- `IDEA.NS` - Vodafone Idea
+
+**Note**: Always use `.NS` suffix for NSE stocks. If you enter just the symbol (e.g., `RELIANCE`), the application automatically adds `.NS`.
+
+## 🔧 VBA Macros
+
+### Available Templates
+
+#### 1. Stock Data Template
+```vba
+' Creates worksheet structure for NSE stock data
+' Headers: Symbol, Price, Change, Volume, Market Cap
+' Pre-filled with popular NSE stocks
 ```
 
-## 🛠️ VBA Templates
+**Keywords**: `"stock data"`, `"nse template"`, `"fetch stock"`
 
-ExcelBot Pro includes these pre-built templates:
+#### 2. Stock Chart Generator
+```vba
+' Creates professional line chart for stock prices
+' Formatted for Indian currency (₹)
+' Customizable for NSE stock analysis
+```
 
-| Template | Description | Keywords |
-|----------|-------------|----------|
-| **Sort** | Sort data in ascending order | sort, order, arrange |
-| **Filter** | Apply AutoFilter to data | filter, search, find |
-| **Highlight Duplicates** | Highlight duplicate values with color | highlight, color, duplicate |
-| **Remove Duplicates** | Delete duplicate rows | remove, delete, duplicate |
-| **Format Table** | Apply professional table formatting | format, style, beautify |
-| **Calculate Sums** | Add sum formulas to numeric columns | sum, total, calculate |
-| **Create Pivot Table** | Generate pivot table from data | pivot |
+**Keywords**: `"chart"`, `"graph"`, `"visualize"`, `"plot"`
 
-### Example Tasks
+#### 3. Portfolio Analysis
+```vba
+' Calculates total portfolio value
+' Shows gains/losses with color coding (green/red)
+' Supports multiple NSE stocks
+' Displays in ₹ format
+```
 
-Try these example descriptions:
-- "Sort my data alphabetically"
-- "Apply filters to my spreadsheet"
-- "Highlight all duplicate entries"
-- "Format my table with colors and borders"
-- "Add sum totals to the bottom of numeric columns"
-- "Create a pivot table from this data"
+**Keywords**: `"portfolio"`, `"analyze"`, `"performance"`
 
-## 🐙 GitHub Integration
+#### 4. Moving Averages (MA5 & MA20)
+```vba
+' Calculates 5-day and 20-day moving averages
+' Technical analysis for NSE stocks
+' Identifies trends and crossovers
+```
 
-### Setup
+**Keywords**: `"moving average"`, `"ma"`, `"technical analysis"`
 
-1. **Create a Personal Access Token**:
-   - Visit [GitHub Settings](https://github.com/settings/tokens)
-   - Generate new token with `repo` scope
-   - Copy the token
+#### 5. Data Sorting
+```vba
+' Sorts NSE stock data alphabetically or by value
+' Maintains data integrity
+```
 
-2. **Configure ExcelBot Pro**:
-   ```bash
-   export GITHUB_TOKEN=your_token_here
-   ```
-   Or add it to your `.env` file
+**Keywords**: `"sort"`, `"order"`, `"arrange"`
 
-3. **Create/Use a Repository**:
-   - Create a repository on GitHub or use an existing one
-   - Use format: `username/repository-name`
+#### 6. AutoFilter
+```vba
+' Applies Excel AutoFilter to NSE stock data
+' Easy filtering by any column
+```
 
-### Pushing Code
+**Keywords**: `"filter"`, `"search"`, `"find"`
 
-The GitHub integration will:
-- ✅ Auto-detect if the file exists (updates it)
-- ✅ Create new files if they don't exist
-- ✅ Add timestamped commit messages
-- ✅ Handle file extensions automatically (.bas, .vba, .txt)
+#### 7. Professional Formatting
+```vba
+' Applies Indian stock market styling
+' Alternating row colors
+' Professional borders and fonts
+' Auto-fit columns
+```
 
-## 📸 Screenshots
+**Keywords**: `"format"`, `"style"`, `"beautify"`
 
-### VBA Macro Generator
-Generate production-ready VBA code from natural language descriptions.
+## 💡 Usage Examples
 
-### Excel Analyzer
-Comprehensive data analysis with statistics and quality reports.
+### Example 1: Get Real-time RELIANCE Stock Quote
 
-### GitHub Integration
-Push your macros to GitHub for version control and sharing.
+```python
+# In "NSE Stock Data" tab
+Symbol: RELIANCE.NS
+Click: Get Stock Quote
+
+Result:
+- Current Price: ₹2,456.75
+- Change: +₹23.50 (+0.97%)
+- Day Range: ₹2,433.25 - ₹2,467.80
+- Market Cap, Volume, P/E ratio
+```
+
+### Example 2: Analyze TCS Portfolio
+
+```python
+# In "VBA Generator" tab
+Task: "Analyze portfolio performance"
+Click: Generate VBA Macro
+
+# Copy macro to Excel
+# Add TCS stock data
+# Run macro
+# View total value and gains
+```
+
+### Example 3: Export INFY Historical Data
+
+```python
+# In "NSE Stock Data" tab
+Symbol: INFY.NS
+Click: Export to Excel
+
+Downloads:
+- INFY_data_20251113.xlsx
+  - Sheet 1: Current Quote
+  - Sheet 2: Historical Data (90 days)
+```
+
+### Example 4: View Market Movers
+
+```python
+# In "NSE Stock Data" tab
+Click: "Top Gainers"
+
+Result:
+1. ADANIPORTS.NS - +5.67%
+2. TATASTEEL.NS - +4.32%
+3. JSWSTEEL.NS - +3.89%
+... (Top 10 NSE gainers)
+```
+
+## 🌐 Deployment
+
+### Local Development
+```bash
+python excelbot_chat.py
+# Access at http://localhost:7860
+```
+
+### Production Server
+See `DEPLOYMENT.md` for:
+- Gunicorn + Nginx setup
+- SSL certificate installation
+- Systemd service configuration
+- Cloud deployment options
+
+### Docker
+```bash
+docker-compose up -d
+```
+
+### Cloud Platforms
+- AWS EC2
+- Google Cloud Run
+- Heroku
+- Azure App Service
+- DigitalOcean
+
+## 📖 Documentation Files
+
+| File | Purpose |
+|------|---------|
+| `README.md` | This file - Complete documentation |
+| `QUICKSTART.md` | 5-minute quick start guide |
+| `DEPLOYMENT.md` | Production deployment instructions |
+| `API_GUIDE.md` | Detailed API usage and examples |
+| `VBA_REFERENCE.md` | Complete VBA macro reference |
+| `CONTRIBUTING.md` | Contribution guidelines |
+| `CHANGELOG.md` | Version history |
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+**Issue**: "No data found for symbol"
+```
+Solution:
+- Use correct format: RELIANCE.NS (not RELIANCE or RELIANCE.BSE)
+- Check if NSE market is open (9:15 AM - 3:30 PM IST)
+- Verify internet connection
+```
+
+**Issue**: "API Error" or "Rate limit exceeded"
+```
+Solution:
+- Free tier: 250 requests/day
+- Wait before making more requests
+- Upgrade to paid plan for more requests
+- Use your own API key
+```
+
+**Issue**: "Symbol not found"
+```
+Solution:
+- NSE stocks MUST have .NS suffix
+- Check symbol on NSE website: www.nseindia.com
+- Use exact symbol (case-sensitive)
+```
+
+**Issue**: "Export failed"
+```
+Solution:
+- Check disk space
+- Verify write permissions
+- Try different symbol
+- Check API status
+```
+
+## 📞 Support
+
+### Documentation
+- 📖 In-app Help tab (comprehensive)
+- 📚 All `.md` files in repository
+- 🎓 Video tutorials (coming soon)
+
+### Community
+- 🐛 [GitHub Issues](https://github.com/mandarab76/ExcelBotPro/issues) - Bug reports
+- 💬 [GitHub Discussions](https://github.com/mandarab76/ExcelBotPro/discussions) - Questions
+- ⭐ Star the repository if helpful!
+
+### API Support
+- **FMP API**: https://financialmodelingprep.com/developer/docs
+- **Zerodha Kite**: https://kite.trade/docs/connect/v3/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how you can help:
+We welcome contributions! See `CONTRIBUTING.md` for guidelines.
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/AmazingFeature`
-3. **Commit your changes**: `git commit -m 'Add some AmazingFeature'`
-4. **Push to the branch**: `git push origin feature/AmazingFeature`
-5. **Open a Pull Request**
-
-### Ideas for Contributions
-- Add more VBA templates
-- Improve natural language processing
-- Add support for other file formats
-- Create video tutorials
-- Improve documentation
-- Add unit tests
+### Ways to Contribute
+- 🐛 Report bugs
+- 💡 Suggest new NSE-focused features
+- 📝 Improve documentation
+- 🔧 Add new VBA templates
+- 🌐 Add support for more Indian exchanges (BSE, MCX)
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-```
-MIT License
-
-Copyright (c) 2025 Mandar Bahadarpurkar
+MIT License - Copyright (c) 2025 Mandar Bahadarpurkar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+in the Software without restriction.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
+See `LICENSE` file for complete text.
 
-## 💬 Support
+## 🙏 Acknowledgments
 
-### Documentation
-- In-app help available in the **Help** tab
-- [GitHub Issues](https://github.com/mandarab76/ExcelBotPro/issues) for bug reports
-- [GitHub Discussions](https://github.com/mandarab76/ExcelBotPro/discussions) for questions
-
-### Troubleshooting
-
-**Issue**: Application won't start
-- **Solution**: Ensure all dependencies are installed: `pip install -r requirements.txt`
-
-**Issue**: GitHub push fails
-- **Solution**: Check your `GITHUB_TOKEN` is set correctly and has `repo` permissions
-
-**Issue**: Excel file upload fails
-- **Solution**: Ensure the file is a valid .xlsx or .xls file and isn't corrupted
-
-**Issue**: VBA macro doesn't work in Excel
-- **Solution**: Enable macros in Excel: File → Options → Trust Center → Macro Settings
-
-### System Requirements
-- **OS**: Windows, macOS, or Linux
-- **Python**: 3.7 or higher
-- **Excel**: Microsoft Excel 2010 or later (for running VBA macros)
-- **Browser**: Modern web browser (Chrome, Firefox, Safari, Edge)
-- **RAM**: 2GB minimum, 4GB recommended
-- **Disk Space**: 500MB for installation and dependencies
-
-## 🎓 Advanced Usage
-
-### Custom VBA Templates
-
-You can add your own templates by editing the `VBA_TEMPLATES` dictionary in `excelbot_chat.py`:
-
-```python
-VBA_TEMPLATES["your_template"] = """Sub YourMacro()
-    ' Your custom VBA code here
-End Sub"""
-```
-
-### Running in Production
-
-For production deployment:
-
-```bash
-# Install gunicorn
-pip install gunicorn
-
-# Run with multiple workers
-gunicorn -w 4 -b 0.0.0.0:7860 excelbot_chat:demo
-```
-
-### Docker Deployment
-
-Create a `Dockerfile`:
-
-```dockerfile
-FROM python:3.9-slim
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
-COPY . .
-EXPOSE 7860
-CMD ["python", "excelbot_chat.py"]
-```
-
-Build and run:
-```bash
-docker build -t excelbotpro .
-docker run -p 7860:7860 -e GITHUB_TOKEN=your_token excelbotpro
-```
-
-## 🌟 Acknowledgments
-
-- Built with [Gradio](https://gradio.app/) for the web interface
-- Uses [PyGithub](https://github.com/PyGithub/PyGithub) for GitHub integration
-- Excel processing powered by [pandas](https://pandas.pydata.org/) and [openpyxl](https://openpyxl.readthedocs.io/)
+- **Zerodha** - For Kite API and Indian trading ecosystem
+- **Financial Modeling Prep** - For comprehensive NSE data API
+- **NSE (National Stock Exchange of India)** - For market data
+- **Gradio** - For the amazing web framework
+- **PyGithub** - For GitHub integration
+- **pandas & openpyxl** - For Excel processing
 
 ## 📊 Project Stats
 
-- **Language**: Python
-- **Framework**: Gradio
 - **Version**: 1.0.0
-- **Last Updated**: 2025-11-13
+- **Release Date**: 2025-11-13
+- **Language**: Python 3.7+
+- **Framework**: Gradio 4.0+
+- **Market Focus**: NSE (National Stock Exchange of India)
+- **API Integration**: Zerodha Kite + Financial Modeling Prep
+- **License**: MIT
+- **Status**: Production Ready ✅
+
+## 🎯 Key Features Summary
+
+✅ Real-time NSE stock quotes  
+✅ Historical data export (90 days)  
+✅ Top gainers/losers/active stocks  
+✅ 7 VBA macro templates for NSE analysis  
+✅ Portfolio analysis with ₹ formatting  
+✅ Technical indicators (Moving Averages)  
+✅ Excel export with multiple sheets  
+✅ GitHub integration for code management  
+✅ Professional documentation  
+✅ Docker deployment ready  
+✅ Cloud deployment ready  
+✅ Free and open source  
+
+## 🇮🇳 Made for Indian Stock Market
+
+This tool is specifically designed for the **Indian stock market ecosystem**:
+- NSE stock symbol support (.NS suffix)
+- Indian Rupee (₹) formatting
+- IST timezone awareness
+- Popular NSE stock pre-configuration
+- Zerodha Kite API integration
+- Indian market hours consideration
 
 ---
 
@@ -347,8 +535,12 @@ docker run -p 7860:7860 -e GITHUB_TOKEN=your_token excelbotpro
 
 **Made with ❤️ by [Mandar Bahadarpurkar](https://github.com/mandarab76)**
 
+**For the Indian Stock Market Community 🇮🇳**
+
 ⭐ Star this repository if you find it helpful!
 
-[Report Bug](https://github.com/mandarab76/ExcelBotPro/issues) • [Request Feature](https://github.com/mandarab76/ExcelBotPro/issues)
+[Report Bug](https://github.com/mandarab76/ExcelBotPro/issues) • [Request Feature](https://github.com/mandarab76/ExcelBotPro/issues) • [Discuss](https://github.com/mandarab76/ExcelBotPro/discussions)
+
+**NSE Market Hours**: 9:15 AM - 3:30 PM IST (Monday-Friday)
 
 </div>
