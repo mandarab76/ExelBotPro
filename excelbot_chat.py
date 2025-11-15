@@ -850,9 +850,46 @@ custom_css = """
 with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") as demo:
     gr.Markdown("""
     <div id="main-title">
-        <div id="company-header">🏢 ATS INTEGRATED</div>
-        <div id="subtitle">NSE Stock Market Analysis Suite</div>
-        <p style="margin-top: 10px; font-size: 0.9em;">Zerodha Kite & Financial Modeling Prep API Integration | VBA Automation for Indian Stock Market</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 15px;">
+            <div style="
+                width: 90px;
+                height: 90px;
+                border-radius: 50%;
+                background: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            ">
+                <div style="
+                    font-size: 32px;
+                    font-weight: bold;
+                    font-style: italic;
+                    color: #2a5298;
+                    letter-spacing: -2px;
+                    transform: rotate(-5deg);
+                ">ats</div>
+            </div>
+            <div style="text-align: left;">
+                <div style="
+                    font-size: 2.2em;
+                    font-weight: 600;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    color: white;
+                    letter-spacing: 3px;
+                    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                ">ATS INTEGRATED</div>
+                <div style="
+                    font-size: 0.9em;
+                    opacity: 0.95;
+                    margin-top: 5px;
+                    font-family: 'Segoe UI', sans-serif;
+                ">NSE Stock Market Analysis Suite</div>
+            </div>
+        </div>
+        <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9;">
+            Zerodha Kite & Financial Modeling Prep API Integration | VBA Automation for Indian Stock Market
+        </p>
     </div>
     """)
     
