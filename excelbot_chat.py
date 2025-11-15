@@ -992,11 +992,12 @@ if __name__ == "__main__":
     print("🚀 Starting ExcelBot Pro - NSE Stock Market Analysis Suite")
     print(f"📊 Zerodha API Key: {ZERODHA_API_KEY[:10]}...")
     print(f"📈 FMP API Key: {FMP_API_KEY[:10]}...")
-    print("🌐 Server starting at http://localhost:7860")
+    print("🌐 Creating public share link for mobile access...")
+    print("")
     
     demo.launch(
         server_name="0.0.0.0",
         server_port=7860,
-        share=False,
+        share=True,  # Creates public URL for mobile access
         show_error=True
     )
