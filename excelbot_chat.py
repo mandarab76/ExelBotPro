@@ -1383,29 +1383,51 @@ with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") 
             - NSE (National Stock Exchange of India)
             """)
     
-    # Footer with branding and disclaimer
+    # Footer with prominent developer attribution and disclaimer
     gr.Markdown("""
     ---
-    <div style="text-align: center; padding: 25px 20px; margin-top: 40px; background: linear-gradient(to right, #f8f9fa, #e9ecef); border-radius: 10px;">
-        <p style="font-size: 1.1em; margin-bottom: 15px; font-weight: 500;">
-            <strong>Developed with ❤️ by Mandar Bahadarpurkar</strong>
-        </p>
-        <p style="margin-bottom: 20px; font-weight: 600; color: #1e3c72;">
-            © 2025 <strong>ATS INTEGRATED</strong>. All Rights Reserved.
-        </p>
-        <div style="max-width: 900px; margin: 0 auto; padding: 20px; background: white; border-radius: 8px; border-left: 4px solid #dc3545;">
-            <p style="font-size: 0.85em; color: #666; line-height: 1.7; text-align: left;">
-                <strong>⚠️ DISCLAIMER:</strong> This application is for educational and informational purposes only. 
-                Stock market data is provided "as is" without warranties of any kind, express or implied. 
-                This is <strong>NOT financial advice</strong>. The creators and ATS Integrated assume no responsibility for 
-                investment decisions made using this tool. Always consult with a qualified financial advisor 
-                before making investment decisions. Past performance does not guarantee future results. 
-                Trading in stock markets involves risk and may result in loss of capital.
+    <div style="text-align: center; padding: 40px 20px; margin-top: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        <div style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+            <p style="font-size: 1.6em; margin-bottom: 10px; font-weight: 700; color: #1e3c72;">
+                ✨ <strong>Developed with ❤️ by Mandar Bahadarpurkar</strong> ✨
+            </p>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 5px; font-style: italic;">
+                NSE Stock Market Analysis Suite
+            </p>
+            <p style="font-size: 0.95em; color: #999; margin-top: 10px;">
+                🔴 Live Data Integration • VBA Automation • Excel Analytics
             </p>
         </div>
-        <p style="margin-top: 20px; font-size: 0.8em; color: #999;">
-            Powered by Zerodha Kite API & Financial Modeling Prep | NSE Market Data<br>
-            Version 1.0.0 - NSE Edition | MIT License
+        
+        <p style="margin-bottom: 25px; font-weight: 700; color: white; font-size: 1.2em;">
+            © 2025 <strong>ATS INTEGRATED</strong> • All Rights Reserved
+        </p>
+        
+        <div style="max-width: 900px; margin: 25px auto; padding: 25px; background: rgba(255,255,255,0.95); border-radius: 10px; border-left: 5px solid #dc3545;">
+            <p style="font-size: 0.9em; color: #333; line-height: 1.8; text-align: left; font-weight: 500;">
+                <strong style="color: #dc3545; font-size: 1.1em;">⚠️ IMPORTANT DISCLAIMER:</strong><br><br>
+                This application is for <strong>educational and informational purposes only</strong>. 
+                Stock market data is provided "as is" without warranties of any kind, express or implied. 
+                This is <strong>NOT financial advice or a recommendation to buy/sell securities</strong>. 
+                The creator <strong>Mandar Bahadarpurkar</strong> and <strong>ATS Integrated</strong> assume no responsibility for 
+                investment decisions made using this tool. <strong>Always consult with a qualified financial advisor</strong> 
+                before making investment decisions. Past performance does not guarantee future results. 
+                <strong>Trading in stock markets involves substantial risk and may result in loss of capital.</strong><br><br>
+                <em>Use this tool responsibly and at your own risk.</em>
+            </p>
+        </div>
+        
+        <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+            <p style="font-size: 0.9em; color: white; font-weight: 500;">
+                🚀 Powered by: <strong>Dhan API</strong> • <strong>Zerodha Kite</strong> • <strong>Financial Modeling Prep</strong><br>
+                📊 Market: <strong>NSE (National Stock Exchange of India)</strong><br>
+                🔧 Version: <strong>1.0.0 - Live Data Edition</strong> | License: <strong>MIT</strong>
+            </p>
+        </div>
+        
+        <p style="margin-top: 30px; font-size: 1em; color: white; font-weight: 600;">
+            📧 Contact: <strong>Mandar Bahadarpurkar</strong> | <strong>ATS Integrated</strong><br>
+            🌐 Professional Stock Market Analysis & Automation Solutions
         </p>
     </div>
     """)
