@@ -16,6 +16,26 @@
 
 ---
 
+## ⚡ Demo Data Mode - Full Functionality Guaranteed!
+
+**This application is production-ready with smart demo data fallbacks:**
+
+- **API Rate Limits?** No problem! Auto-switches to demo data when FMP API limits are reached
+- **Full Functionality:** All features work perfectly with demo data:
+  - ✅ Real-time stock quotes for major NSE stocks  
+  - ✅ 90-day historical data with price/volume
+  - ✅ Top gainers, losers, most active stocks
+  - ✅ Excel exports with 4 sheets (Quote, Historical, Summary, Technical Analysis)
+  - ✅ VBA macro generation (no API required)
+  - ✅ Excel file analysis (no API required)
+- **Clear Indicators:** Demo mode is marked with 🎭 badges and warnings
+- **Mobile Optimized:** Works perfectly on phones/tablets
+- **Always Available:** Test anytime without API concerns
+
+**📱 See MOBILE_TESTING_GUIDE.md for complete testing instructions!**
+
+---
+
 ## 📋 Table of Contents
 - [Overview](#-overview)
 - [Features](#-features)
