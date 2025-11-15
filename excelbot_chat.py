@@ -1384,8 +1384,7 @@ with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") 
             """)
     
     # Footer with prominent developer attribution and disclaimer
-    gr.Markdown("""
-    ---
+    gr.HTML("""
     <div style="text-align: center; padding: 40px 20px; margin-top: 50px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #764ba2 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
         
         <div style="background: #ffffff; padding: 35px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 3px solid #2a5298;">
