@@ -745,7 +745,7 @@ with gr.Blocks(css=custom_css, title="ExcelBot Pro - NSE Stock Market") as demo:
             
             vba_output = gr.Code(
                 label="Generated VBA Macro for NSE Stocks",
-                language="vbnet",
+                language="python",  # Using python for syntax highlighting (VBA not supported)
                 lines=25
             )
             
@@ -791,7 +791,7 @@ with gr.Blocks(css=custom_css, title="ExcelBot Pro - NSE Stock Market") as demo:
             
             code_to_push = gr.Code(
                 label="Code to Push (paste or generate first)",
-                language="vbnet",
+                language="python",  # Using python for syntax highlighting (VBA not supported)
                 lines=10
             )
             
