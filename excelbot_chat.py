@@ -30,10 +30,110 @@ POPULAR_NSE_STOCKS = [
     "BAJFINANCE.NS", "WIPRO.NS", "ULTRACEMCO.NS", "NESTLEIND.NS", "TITAN.NS"
 ]
 
+# Demo/Mock Data for NSE Stocks (when API is unavailable)
+DEMO_NSE_DATA = {
+    "RELIANCE.NS": {
+        "symbol": "RELIANCE.NS",
+        "name": "Reliance Industries Ltd",
+        "price": 2456.75,
+        "change": 23.50,
+        "change_percent": 0.97,
+        "day_low": 2433.25,
+        "day_high": 2467.80,
+        "year_low": 2150.00,
+        "year_high": 2750.00,
+        "market_cap": 16543210000000,
+        "volume": 8523000,
+        "avg_volume": 7200000,
+        "open": 2445.00,
+        "previous_close": 2433.25,
+        "eps": 98.50,
+        "pe": 24.95,
+        "timestamp": "2025-11-15"
+    },
+    "TCS.NS": {
+        "symbol": "TCS.NS",
+        "name": "Tata Consultancy Services Ltd",
+        "price": 3842.50,
+        "change": 46.75,
+        "change_percent": 1.23,
+        "day_low": 3810.00,
+        "day_high": 3855.00,
+        "year_low": 3200.00,
+        "year_high": 4100.00,
+        "market_cap": 14000000000000,
+        "volume": 2156000,
+        "avg_volume": 1800000,
+        "open": 3820.00,
+        "previous_close": 3795.75,
+        "eps": 115.00,
+        "pe": 33.41,
+        "timestamp": "2025-11-15"
+    },
+    "INFY.NS": {
+        "symbol": "INFY.NS",
+        "name": "Infosys Ltd",
+        "price": 1567.30,
+        "change": -7.20,
+        "change_percent": -0.46,
+        "day_low": 1562.00,
+        "day_high": 1580.00,
+        "year_low": 1350.00,
+        "year_high": 1750.00,
+        "market_cap": 6500000000000,
+        "volume": 5234000,
+        "avg_volume": 4500000,
+        "open": 1575.00,
+        "previous_close": 1574.50,
+        "eps": 62.50,
+        "pe": 25.08,
+        "timestamp": "2025-11-15"
+    },
+    "HDFCBANK.NS": {
+        "symbol": "HDFCBANK.NS",
+        "name": "HDFC Bank Ltd",
+        "price": 1678.90,
+        "change": 15.60,
+        "change_percent": 0.94,
+        "day_low": 1665.00,
+        "day_high": 1685.00,
+        "year_low": 1400.00,
+        "year_high": 1800.00,
+        "market_cap": 12800000000000,
+        "volume": 6789000,
+        "avg_volume": 5600000,
+        "open": 1670.00,
+        "previous_close": 1663.30,
+        "eps": 85.50,
+        "pe": 19.63,
+        "timestamp": "2025-11-15"
+    },
+    "ICICIBANK.NS": {
+        "symbol": "ICICIBANK.NS",
+        "name": "ICICI Bank Ltd",
+        "price": 1089.45,
+        "change": 12.30,
+        "change_percent": 1.14,
+        "day_low": 1078.00,
+        "day_high": 1095.00,
+        "year_low": 850.00,
+        "year_high": 1150.00,
+        "market_cap": 7600000000000,
+        "volume": 8456000,
+        "avg_volume": 7200000,
+        "open": 1082.00,
+        "previous_close": 1077.15,
+        "eps": 48.20,
+        "pe": 22.60,
+        "timestamp": "2025-11-15"
+    }
+}
+
 # Stock Market Data Functions
 def fetch_nse_stock_data(symbol: str) -> Dict:
     """
     Fetch NSE stock data from Financial Modeling Prep API
+    Falls back to demo data if API is unavailable
     Symbol format: RELIANCE.NS, TCS.NS, INFY.NS
     """
     try:
@@ -41,9 +141,25 @@ def fetch_nse_stock_data(symbol: str) -> Dict:
         if not symbol.endswith('.NS'):
             symbol = f"{symbol}.NS"
         
-        # Fetch quote data
+        # Try API first
         url = f"{FMP_BASE_URL}/quote/{symbol}?apikey={FMP_API_KEY}"
         response = requests.get(url, timeout=10)
+        
+        # If API fails (403, 429, etc.), use demo data
+        if response.status_code in [403, 429]:
+            # Check if we have demo data for this symbol
+            if symbol in DEMO_NSE_DATA:
+                demo_data = DEMO_NSE_DATA[symbol].copy()
+                demo_data["demo_mode"] = True
+                return demo_data
+            else:
+                # Return demo data for RELIANCE as fallback
+                demo_data = DEMO_NSE_DATA["RELIANCE.NS"].copy()
+                demo_data["demo_mode"] = True
+                demo_data["symbol"] = symbol
+                demo_data["name"] = f"Demo Data - {symbol}"
+                return demo_data
+        
         response.raise_for_status()
         data = response.json()
         
@@ -66,11 +182,23 @@ def fetch_nse_stock_data(symbol: str) -> Dict:
                 "previous_close": stock.get("previousClose", 0),
                 "eps": stock.get("eps", 0),
                 "pe": stock.get("pe", 0),
-                "timestamp": stock.get("timestamp", "")
+                "timestamp": stock.get("timestamp", ""),
+                "demo_mode": False
             }
         else:
+            # No data from API, use demo
+            if symbol in DEMO_NSE_DATA:
+                demo_data = DEMO_NSE_DATA[symbol].copy()
+                demo_data["demo_mode"] = True
+                return demo_data
             return {"error": f"No data found for {symbol}"}
+            
     except Exception as e:
+        # On any error, try to return demo data
+        if symbol in DEMO_NSE_DATA:
+            demo_data = DEMO_NSE_DATA[symbol].copy()
+            demo_data["demo_mode"] = True
+            return demo_data
         return {"error": f"Error fetching data: {str(e)}"}
 
 def fetch_nse_historical_data(symbol: str, days: int = 30) -> pd.DataFrame:
@@ -182,10 +310,25 @@ def display_stock_quote(symbol: str) -> str:
     data = fetch_nse_stock_data(symbol)
     
     if "error" in data:
-        return f"❌ {data['error']}\n\nPlease ensure:\n- Symbol is correct (e.g., RELIANCE.NS, TCS.NS)\n- Internet connection is active\n- API key is valid"
+        return f"""❌ {data['error']}
+
+**API Issue Detected:**
+- Free tier limit reached (250 requests/day)
+- API will reset in 24 hours
+
+**💡 Solutions:**
+1. Get your own free API key: https://financialmodelingprep.com
+2. Try these demo stocks: RELIANCE.NS, TCS.NS, INFY.NS, HDFCBANK.NS, ICICIBANK.NS
+3. VBA Generator and Excel Analyzer work without API!
+
+**✅ Try the VBA Generator tab - it works perfectly!**
+"""
+    
+    demo_badge = "🎭 **DEMO DATA**" if data.get('demo_mode') else ""
+    api_source = "Demo Mode (API limit reached)" if data.get('demo_mode') else "Live - Financial Modeling Prep API"
     
     result = f"""
-📊 **{data['name']} ({data['symbol']})**
+📊 **{data['name']} ({data['symbol']})**  {demo_badge}
 
 **Current Price:** ₹{data['price']:.2f}
 **Change:** ₹{data['change']:.2f} ({data['change_percent']:.2f}%)
@@ -204,7 +347,9 @@ def display_stock_quote(symbol: str) -> str:
 - EPS: ₹{data['eps']:.2f}
 - P/E Ratio: {data['pe']:.2f}
 
-*Data from Financial Modeling Prep API - NSE*
+*Data Source: {api_source} - NSE*
+
+{"⚠️ **Using demo data** - Get free API key to see live data!" if data.get('demo_mode') else ""}
 """
     return result
 
