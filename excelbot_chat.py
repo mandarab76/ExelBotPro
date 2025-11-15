@@ -799,26 +799,60 @@ def push_to_github(repo_name, file_name, code):
     except Exception as e:
         return f"❌ GitHub push failed: {str(e)}\n\nTraceback:\n{traceback.format_exc()}"
 
-# Custom CSS for better UI
+# Custom CSS for better UI with ATS Integrated branding
 custom_css = """
 #main-title {
-    background: linear-gradient(90deg, #FF9933 0%, #138808 50%, #000080 100%);
-    padding: 20px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    padding: 25px 20px;
+    border-radius: 12px;
     color: white;
     text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#company-header {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+#subtitle {
+    font-size: 1.1em;
+    opacity: 0.95;
+    margin-top: 5px;
 }
 .gr-button-primary {
-    background: linear-gradient(90deg, #FF9933 0%, #138808 100%);
+    background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+    border: none;
+    transition: all 0.3s ease;
+}
+.gr-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 30px;
+}
+#disclaimer {
+    font-size: 0.75em;
+    color: #999;
+    max-width: 800px;
+    margin: 10px auto;
+    line-height: 1.5;
 }
 """
 
 # Build Gradio Interface
-with gr.Blocks(css=custom_css, title="ExcelBot Pro - NSE Stock Market") as demo:
+with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") as demo:
     gr.Markdown("""
     <div id="main-title">
-        <h1>📈 ExcelBot Pro - NSE Stock Market Analysis Suite</h1>
-        <p>Zerodha Kite & Financial Modeling Prep API Integration | VBA Automation for Indian Stock Market</p>
+        <div id="company-header">🏢 ATS INTEGRATED</div>
+        <div id="subtitle">NSE Stock Market Analysis Suite</div>
+        <p style="margin-top: 10px; font-size: 0.9em;">Zerodha Kite & Financial Modeling Prep API Integration | VBA Automation for Indian Stock Market</p>
     </div>
     """)
     
@@ -1077,6 +1111,33 @@ with gr.Blocks(css=custom_css, title="ExcelBot Pro - NSE Stock Market") as demo:
             - Financial Modeling Prep for NSE data API
             - NSE (National Stock Exchange of India)
             """)
+    
+    # Footer with branding and disclaimer
+    gr.Markdown("""
+    ---
+    <div style="text-align: center; padding: 25px 20px; margin-top: 40px; background: linear-gradient(to right, #f8f9fa, #e9ecef); border-radius: 10px;">
+        <p style="font-size: 1.1em; margin-bottom: 15px; font-weight: 500;">
+            <strong>Developed with ❤️ by Mandar Bahadarpurkar</strong>
+        </p>
+        <p style="margin-bottom: 20px; font-weight: 600; color: #1e3c72;">
+            © 2025 <strong>ATS INTEGRATED</strong>. All Rights Reserved.
+        </p>
+        <div style="max-width: 900px; margin: 0 auto; padding: 20px; background: white; border-radius: 8px; border-left: 4px solid #dc3545;">
+            <p style="font-size: 0.85em; color: #666; line-height: 1.7; text-align: left;">
+                <strong>⚠️ DISCLAIMER:</strong> This application is for educational and informational purposes only. 
+                Stock market data is provided "as is" without warranties of any kind, express or implied. 
+                This is <strong>NOT financial advice</strong>. The creators and ATS Integrated assume no responsibility for 
+                investment decisions made using this tool. Always consult with a qualified financial advisor 
+                before making investment decisions. Past performance does not guarantee future results. 
+                Trading in stock markets involves risk and may result in loss of capital.
+            </p>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.8em; color: #999;">
+            Powered by Zerodha Kite API & Financial Modeling Prep | NSE Market Data<br>
+            Version 1.0.0 - NSE Edition | MIT License
+        </p>
+    </div>
+    """)
     
     # Event handlers
     fetch_quote_button.click(
