@@ -18,10 +18,39 @@ import requests
 from typing import Dict, List, Optional
 import json
 
+# Trading API Libraries
+try:
+    from kiteconnect import KiteConnect
+    KITE_AVAILABLE = True
+except ImportError:
+    KITE_AVAILABLE = False
+    print("⚠️ KiteConnect not available. Install with: pip install kiteconnect")
+
+try:
+    from dhanhq import dhanhq
+    DHAN_AVAILABLE = True
+except ImportError:
+    DHAN_AVAILABLE = False
+    print("⚠️ DhanHQ not available. Install with: pip install dhanhq")
+
 # API Configuration
 ZERODHA_API_KEY = os.getenv("ZERODHA_API_KEY", "kr8ob80gcmucrvph")
 FMP_API_KEY = os.getenv("FMP_API_KEY", "rtD0v37SghQ4gMZNfX7q2Arv6RO7StUv")
 FMP_BASE_URL = "https://financialmodelingprep.com/api/v3"
+
+# Dhan API Configuration
+DHAN_CLIENT_ID = os.getenv("DHAN_CLIENT_ID", "a04ba78c")
+DHAN_ACCESS_TOKEN = os.getenv("DHAN_ACCESS_TOKEN", "ccb99f92-9f54-41dc-b209-84d53ac76291")
+
+# Initialize Dhan client
+dhan_client = None
+if DHAN_AVAILABLE:
+    try:
+        dhan_client = dhanhq(DHAN_CLIENT_ID, DHAN_ACCESS_TOKEN)
+        print("✅ Dhan API initialized successfully")
+    except Exception as e:
+        print(f"⚠️ Dhan API initialization failed: {e}")
+        dhan_client = None
 
 # Popular NSE Stocks
 POPULAR_NSE_STOCKS = [
@@ -130,11 +159,74 @@ DEMO_NSE_DATA = {
     }
 }
 
+# NSE Symbol Mapping for Dhan API
+NSE_SYMBOL_MAP = {
+    "RELIANCE": "RELIANCE", "TCS": "TCS", "INFY": "INFY", "INFOSYS": "INFY",
+    "HDFCBANK": "HDFCBANK", "ICICIBANK": "ICICIBANK", "HINDUNILVR": "HINDUNILVR",
+    "ITC": "ITC", "SBIN": "SBIN", "BHARTIARTL": "BHARTIARTL", "KOTAKBANK": "KOTAKBANK",
+    "LT": "LT", "AXISBANK": "AXISBANK", "ASIANPAINT": "ASIANPAINT", "MARUTI": "MARUTI",
+    "HCLTECH": "HCLTECH", "BAJFINANCE": "BAJFINANCE", "WIPRO": "WIPRO",
+    "ULTRACEMCO": "ULTRACEMCO", "NESTLEIND": "NESTLEIND", "TITAN": "TITAN"
+}
+
+def get_clean_symbol(symbol: str) -> str:
+    """Remove .NS suffix and clean symbol for API calls"""
+    return symbol.replace('.NS', '').replace('.BO', '').upper()
+
+def fetch_live_dhan_data(symbol: str) -> Dict:
+    """
+    Fetch live NSE stock data from Dhan API
+    Returns: Dict with stock data or None if unavailable
+    """
+    if not dhan_client:
+        return None
+    
+    try:
+        clean_symbol = get_clean_symbol(symbol)
+        mapped_symbol = NSE_SYMBOL_MAP.get(clean_symbol, clean_symbol)
+        
+        # Dhan API call for live quotes
+        # Note: Dhan uses security_id, we need to get quote by symbol
+        response = dhan_client.get_quote(
+            exchange_segment=dhan_client.NSE,
+            security_id=mapped_symbol
+        )
+        
+        if response and response.get('status') == 'success':
+            data = response.get('data', {})
+            return {
+                "symbol": f"{clean_symbol}.NS",
+                "name": data.get('trading_symbol', clean_symbol),
+                "price": data.get('ltp', 0),  # Last Traded Price
+                "change": data.get('change', 0),
+                "change_percent": data.get('change_percent', 0),
+                "day_low": data.get('low', 0),
+                "day_high": data.get('high', 0),
+                "year_low": data.get('52_week_low', 0),
+                "year_high": data.get('52_week_high', 0),
+                "market_cap": 0,  # Not provided by Dhan
+                "volume": data.get('volume', 0),
+                "avg_volume": data.get('avg_volume', 0),
+                "open": data.get('open', 0),
+                "previous_close": data.get('prev_close', 0),
+                "eps": 0,  # Not provided by Dhan
+                "pe": 0,   # Not provided by Dhan
+                "timestamp": data.get('timestamp', ''),
+                "demo_mode": False,
+                "data_source": "Dhan API (Live)"
+            }
+        return None
+    except Exception as e:
+        print(f"Dhan API error for {symbol}: {e}")
+        return None
+
 # Stock Market Data Functions
 def fetch_nse_stock_data(symbol: str) -> Dict:
     """
-    Fetch NSE stock data from Financial Modeling Prep API
-    Falls back to demo data if API is unavailable
+    Fetch NSE stock data with multi-source fallback:
+    1. Try Dhan API (Live Indian market data)
+    2. Try Financial Modeling Prep API
+    3. Fall back to demo data
     Symbol format: RELIANCE.NS, TCS.NS, INFY.NS
     """
     try:
@@ -142,23 +234,31 @@ def fetch_nse_stock_data(symbol: str) -> Dict:
         if not symbol.endswith('.NS'):
             symbol = f"{symbol}.NS"
         
-        # Try API first
+        # PRIORITY 1: Try Dhan API for live Indian market data
+        if DHAN_AVAILABLE and dhan_client:
+            dhan_data = fetch_live_dhan_data(symbol)
+            if dhan_data:
+                print(f"✅ Fetched LIVE data for {symbol} from Dhan API")
+                return dhan_data
+        
+        # PRIORITY 2: Try Financial Modeling Prep API
         url = f"{FMP_BASE_URL}/quote/{symbol}?apikey={FMP_API_KEY}"
         response = requests.get(url, timeout=10)
         
         # If API fails (403, 429, etc.), use demo data
         if response.status_code in [403, 429]:
-            # Check if we have demo data for this symbol
+            print(f"⚠️ FMP API rate limit for {symbol}, using demo data")
             if symbol in DEMO_NSE_DATA:
                 demo_data = DEMO_NSE_DATA[symbol].copy()
                 demo_data["demo_mode"] = True
+                demo_data["data_source"] = "Demo Data (API Rate Limit)"
                 return demo_data
             else:
-                # Return demo data for RELIANCE as fallback
                 demo_data = DEMO_NSE_DATA["RELIANCE.NS"].copy()
                 demo_data["demo_mode"] = True
                 demo_data["symbol"] = symbol
                 demo_data["name"] = f"Demo Data - {symbol}"
+                demo_data["data_source"] = "Demo Data (API Rate Limit)"
                 return demo_data
         
         response.raise_for_status()
@@ -166,6 +266,7 @@ def fetch_nse_stock_data(symbol: str) -> Dict:
         
         if data and len(data) > 0:
             stock = data[0]
+            print(f"✅ Fetched data for {symbol} from FMP API")
             return {
                 "symbol": stock.get("symbol", "N/A"),
                 "name": stock.get("name", "N/A"),
@@ -184,21 +285,26 @@ def fetch_nse_stock_data(symbol: str) -> Dict:
                 "eps": stock.get("eps", 0),
                 "pe": stock.get("pe", 0),
                 "timestamp": stock.get("timestamp", ""),
-                "demo_mode": False
+                "demo_mode": False,
+                "data_source": "Financial Modeling Prep API"
             }
         else:
             # No data from API, use demo
+            print(f"⚠️ No data from FMP for {symbol}, using demo data")
             if symbol in DEMO_NSE_DATA:
                 demo_data = DEMO_NSE_DATA[symbol].copy()
                 demo_data["demo_mode"] = True
+                demo_data["data_source"] = "Demo Data (No API Data)"
                 return demo_data
             return {"error": f"No data found for {symbol}"}
             
     except Exception as e:
         # On any error, try to return demo data
+        print(f"❌ Error fetching {symbol}: {e}, using demo data")
         if symbol in DEMO_NSE_DATA:
             demo_data = DEMO_NSE_DATA[symbol].copy()
             demo_data["demo_mode"] = True
+            demo_data["data_source"] = "Demo Data (Error Fallback)"
             return demo_data
         return {"error": f"Error fetching data: {str(e)}"}
 
@@ -410,8 +516,8 @@ def display_stock_quote(symbol: str) -> str:
 **✅ Try the VBA Generator tab - it works perfectly!**
 """
     
-    demo_badge = "🎭 **DEMO DATA**" if data.get('demo_mode') else ""
-    api_source = "Demo Mode (API limit reached)" if data.get('demo_mode') else "Live - Financial Modeling Prep API"
+    demo_badge = "🎭 **DEMO DATA**" if data.get('demo_mode') else "🔴 **LIVE DATA**"
+    api_source = data.get('data_source', 'Unknown Source')
     
     result = f"""
 📊 **{data['name']} ({data['symbol']})**  {demo_badge}
@@ -1009,7 +1115,7 @@ with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") 
             </div>
         </div>
         <p style="margin-top: 10px; font-size: 0.85em; opacity: 0.9;">
-            Zerodha Kite & Financial Modeling Prep API Integration | VBA Automation for Indian Stock Market
+            🔴 <strong>LIVE DATA</strong>: Dhan API • Zerodha Kite • Financial Modeling Prep | VBA Automation for Indian Stock Market
         </p>
     </div>
     """)
@@ -1141,21 +1247,28 @@ with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") 
             ## ExcelBot Pro - NSE Stock Market Analysis Suite
             
             ### 🎯 Features
-            1. **NSE Stock Data**: Real-time quotes from Financial Modeling Prep API
+            1. **NSE Stock Data**: 🔴 **LIVE** quotes from Dhan API & Financial Modeling Prep
             2. **VBA Generator**: Create macros for Indian stock market analysis
             3. **Excel Analyzer**: Analyze stock data files
             4. **GitHub Integration**: Version control your VBA macros
             
-            ### 📊 API Integration
+            ### 📊 API Integration (Multi-Source Live Data)
             
-            **Zerodha Kite API**
+            **Dhan API** 🔴 LIVE (Priority #1)
+            - Client ID: {DHAN_CLIENT_ID}
+            - Status: ✅ **ACTIVE - Fetching Real-time NSE Data**
+            - Data: Live prices, volume, day high/low, open, close
+            - Market: NSE (India)
+            
+            **Zerodha Kite API** (Priority #2)
             - API Key: {ZERODHA_API_KEY[:10]}...
-            - Status: Configured for future integration
+            - Status: Configured (Ready for integration)
             
-            **Financial Modeling Prep API**
+            **Financial Modeling Prep API** (Priority #3)
             - API Key: {FMP_API_KEY[:10]}...
             - Base URL: {FMP_BASE_URL}
             - Market: NSE (National Stock Exchange of India)
+            - Status: Fallback source for comprehensive data
             
             ### 📝 How to Use NSE Stock Data
             

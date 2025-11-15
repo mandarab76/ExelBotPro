@@ -25,3 +25,7 @@ python-dotenv>=1.0.0
 
 # Data Analysis
 numpy>=1.24.0
+
+# Trading APIs
+kiteconnect>=4.2.0
+dhanhq>=1.3.0
