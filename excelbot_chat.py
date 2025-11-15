@@ -1386,49 +1386,58 @@ with gr.Blocks(css=custom_css, title="ATS Integrated - NSE Stock Market Suite") 
     # Footer with prominent developer attribution and disclaimer
     gr.Markdown("""
     ---
-    <div style="text-align: center; padding: 40px 20px; margin-top: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-        <div style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-            <p style="font-size: 1.6em; margin-bottom: 10px; font-weight: 700; color: #1e3c72;">
-                ✨ <strong>Developed with ❤️ by Mandar Bahadarpurkar</strong> ✨
+    <div style="text-align: center; padding: 40px 20px; margin-top: 50px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #764ba2 100%); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        
+        <div style="background: #ffffff; padding: 35px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); border: 3px solid #2a5298;">
+            <p style="font-size: 2em; margin-bottom: 15px; font-weight: 900; color: #000000; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+                ✨ <strong>Developed with ❤️ by<br>Mandar Bahadarpurkar</strong> ✨
             </p>
-            <p style="font-size: 1.1em; color: #666; margin-bottom: 5px; font-style: italic;">
+            <p style="font-size: 1.3em; color: #1e3c72; margin-bottom: 10px; font-weight: 700;">
                 NSE Stock Market Analysis Suite
             </p>
-            <p style="font-size: 0.95em; color: #999; margin-top: 10px;">
-                🔴 Live Data Integration • VBA Automation • Excel Analytics
+            <p style="font-size: 1.1em; color: #333333; margin-top: 15px; font-weight: 600;">
+                🔴 Live Data Integration • 🔧 VBA Automation • 📊 Excel Analytics
             </p>
         </div>
         
-        <p style="margin-bottom: 25px; font-weight: 700; color: white; font-size: 1.2em;">
+        <p style="margin-bottom: 30px; font-weight: 800; color: #ffffff; font-size: 1.4em; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
             © 2025 <strong>ATS INTEGRATED</strong> • All Rights Reserved
         </p>
         
-        <div style="max-width: 900px; margin: 25px auto; padding: 25px; background: rgba(255,255,255,0.95); border-radius: 10px; border-left: 5px solid #dc3545;">
-            <p style="font-size: 0.9em; color: #333; line-height: 1.8; text-align: left; font-weight: 500;">
-                <strong style="color: #dc3545; font-size: 1.1em;">⚠️ IMPORTANT DISCLAIMER:</strong><br><br>
-                This application is for <strong>educational and informational purposes only</strong>. 
+        <div style="max-width: 900px; margin: 30px auto; padding: 30px; background: #ffffff; border-radius: 10px; border-left: 6px solid #dc3545; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <p style="font-size: 1em; color: #000000; line-height: 1.9; text-align: left; font-weight: 600;">
+                <strong style="color: #dc3545; font-size: 1.2em;">⚠️ IMPORTANT DISCLAIMER:</strong><br><br>
+                This application is for <strong style="color: #000000;">educational and informational purposes only</strong>. 
                 Stock market data is provided "as is" without warranties of any kind, express or implied. 
-                This is <strong>NOT financial advice or a recommendation to buy/sell securities</strong>. 
-                The creator <strong>Mandar Bahadarpurkar</strong> and <strong>ATS Integrated</strong> assume no responsibility for 
-                investment decisions made using this tool. <strong>Always consult with a qualified financial advisor</strong> 
+                This is <strong style="color: #000000;">NOT financial advice or a recommendation to buy/sell securities</strong>. 
+                The creator <strong style="color: #1e3c72; font-size: 1.05em;">Mandar Bahadarpurkar</strong> and <strong style="color: #1e3c72;">ATS Integrated</strong> assume no responsibility for 
+                investment decisions made using this tool. <strong style="color: #000000;">Always consult with a qualified financial advisor</strong> 
                 before making investment decisions. Past performance does not guarantee future results. 
-                <strong>Trading in stock markets involves substantial risk and may result in loss of capital.</strong><br><br>
-                <em>Use this tool responsibly and at your own risk.</em>
+                <strong style="color: #000000;">Trading in stock markets involves substantial risk and may result in loss of capital.</strong><br><br>
+                <em style="color: #333333; font-size: 0.95em;">Use this tool responsibly and at your own risk.</em>
             </p>
         </div>
         
-        <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
-            <p style="font-size: 0.9em; color: white; font-weight: 500;">
-                🚀 Powered by: <strong>Dhan API</strong> • <strong>Zerodha Kite</strong> • <strong>Financial Modeling Prep</strong><br>
-                📊 Market: <strong>NSE (National Stock Exchange of India)</strong><br>
-                🔧 Version: <strong>1.0.0 - Live Data Edition</strong> | License: <strong>MIT</strong>
+        <div style="margin-top: 30px; padding: 25px; background: rgba(255,255,255,0.15); border-radius: 10px; border: 2px solid rgba(255,255,255,0.3);">
+            <p style="font-size: 1.05em; color: #ffffff; font-weight: 600; line-height: 1.8;">
+                🚀 <strong>Powered by:</strong> Dhan API • Zerodha Kite • Financial Modeling Prep<br>
+                📊 <strong>Market:</strong> NSE (National Stock Exchange of India)<br>
+                🔧 <strong>Version:</strong> 1.0.0 - Live Data Edition | <strong>License:</strong> MIT
             </p>
         </div>
         
-        <p style="margin-top: 30px; font-size: 1em; color: white; font-weight: 600;">
-            📧 Contact: <strong>Mandar Bahadarpurkar</strong> | <strong>ATS Integrated</strong><br>
-            🌐 Professional Stock Market Analysis & Automation Solutions
-        </p>
+        <div style="margin-top: 35px; padding: 25px; background: #ffffff; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <p style="font-size: 1.2em; color: #000000; font-weight: 800; margin-bottom: 8px;">
+                📧 <strong>Contact: Mandar Bahadarpurkar</strong>
+            </p>
+            <p style="font-size: 1.1em; color: #1e3c72; font-weight: 700;">
+                <strong>ATS INTEGRATED</strong>
+            </p>
+            <p style="font-size: 0.95em; color: #333333; font-weight: 600; margin-top: 10px;">
+                🌐 Professional Stock Market Analysis & Automation Solutions
+            </p>
+        </div>
+        
     </div>
     """)
     
